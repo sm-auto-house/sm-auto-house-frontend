@@ -76,8 +76,8 @@ export function Hero() {
         aria-hidden
         className="pointer-events-none absolute left-0 top-0 z-10 hidden h-full w-16 items-end justify-center pb-32 xl:flex"
       >
-        <span className="rotate-180 font-tech text-[0.625rem] uppercase tracking-[0.42em] text-carbon-400 [writing-mode:vertical-rl]">
-          Est. 1984 — Colombo, Sri Lanka
+        <span className="rotate-180 font-tech text-[0.625rem] uppercase tracking-[0.26em] text-carbon-400 [writing-mode:vertical-rl]">
+          Est. 1984 · Colombo, Sri Lanka
         </span>
       </div>
 
@@ -166,7 +166,7 @@ export function Hero() {
               <span className="font-display text-[2.25rem] font-extrabold leading-none text-signal sm:text-[2.75rem]">
                 40<span className="text-ink">+</span>
               </span>
-              <span className="font-tech text-[0.625rem] uppercase leading-[1.5] tracking-[0.2em] text-carbon-200">
+              <span className="font-tech text-[0.625rem] uppercase leading-[1.5] tracking-[0.13em] text-carbon-200">
                 Years of
                 <br />
                 Experience
@@ -183,7 +183,7 @@ export function Hero() {
                 className="size-5 shrink-0 text-signal"
                 strokeWidth={1.5}
               />
-              <span className="font-tech text-[0.625rem] uppercase leading-[1.5] tracking-[0.2em] text-carbon-200">
+              <span className="font-tech text-[0.625rem] uppercase leading-[1.5] tracking-[0.13em] text-carbon-200">
                 Trusted Automotive
                 <br />
                 Solutions
@@ -203,7 +203,7 @@ export function Hero() {
         transition={{ duration: 1, delay: 1.3 }}
         className="group absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-3 lg:flex"
       >
-        <span className="font-tech text-[0.5625rem] uppercase tracking-[0.35em] text-carbon-400 transition-colors group-hover:text-carbon-200">
+        <span className="font-tech text-[0.5625rem] uppercase tracking-[0.1em] text-carbon-400 transition-colors group-hover:text-carbon-200">
           Scroll
         </span>
         <span className="relative block h-12 w-px overflow-hidden bg-ink/15">

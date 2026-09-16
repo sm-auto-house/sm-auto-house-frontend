@@ -23,7 +23,7 @@ export function AboutSection() {
       {/* Oversized ghosted year, anchoring the section without adding noise */}
       <span
         aria-hidden
-        className="pointer-events-none absolute right-0 top-6 select-none font-display text-[16vw] font-extrabold leading-none tracking-[-0.06em] text-ink/[0.022] lg:top-10"
+        className="pointer-events-none absolute right-0 top-6 select-none font-display text-[16vw] font-extrabold leading-none tracking-[-0.035em] text-ink/[0.022] lg:top-10"
       >
         {site.founded}
       </span>
@@ -54,7 +54,7 @@ export function AboutSection() {
                   />
                 </div>
 
-                {/* Corner tick — a small engineering-drawing cue */}
+                {/* Corner tick: a small engineering-drawing cue */}
                 <span
                   aria-hidden
                   className="absolute -left-3 -top-3 hidden size-12 border-l border-t border-signal/70 lg:block"
@@ -87,7 +87,7 @@ export function AboutSection() {
                 <p>
                   Today we supply engine, brake, electrical and suspension
                   components, lubricants, filtration and car care products to
-                  workshops, dealers and fleet operators from Jaffna to Matara —
+                  workshops, dealers and fleet operators from Jaffna to Matara,
                   backed by technical people who know the catalogue as well as
                   the vehicles it serves.
                 </p>

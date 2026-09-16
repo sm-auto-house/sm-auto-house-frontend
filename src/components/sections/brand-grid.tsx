@@ -16,7 +16,7 @@ export function BrandGrid() {
       <Container>
         <Reveal direction="up" className="flex flex-col items-center text-center">
           <EyebrowLabel tone="muted">Partners</EyebrowLabel>
-          <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.35rem,3.2vw,2rem)] font-bold uppercase leading-[1.15] tracking-[-0.02em] text-carbon-100">
+          <h2 className="mt-5 max-w-2xl font-display text-[clamp(1.35rem,3.2vw,2rem)] font-bold uppercase leading-[1.15] tracking-[-0.012em] text-carbon-100">
             Trusted by Leading Automotive Brands
           </h2>
         </Reveal>
@@ -41,8 +41,8 @@ export function BrandGrid() {
         </RevealGroup>
 
         <Reveal direction="up" delay={0.15}>
-          <p className="mt-10 text-center font-tech text-[0.5625rem] uppercase tracking-[0.25em] text-carbon-500">
-            Placeholder marks — replace with supplied brand assets
+          <p className="mt-10 text-center font-tech text-[0.5625rem] uppercase tracking-[0.11em] text-carbon-500">
+            Placeholder marks. Replace with supplied brand assets
           </p>
         </Reveal>
       </Container>

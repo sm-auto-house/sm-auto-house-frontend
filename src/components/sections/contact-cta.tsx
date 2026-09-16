@@ -19,7 +19,7 @@ export function ContactCTA() {
       id="contact"
       className="relative isolate scroll-mt-24 overflow-hidden bg-carbon-950 py-(--spacing-section)"
     >
-      {/* Heavily dimmed plate — texture, not subject matter */}
+      {/* Heavily dimmed plate: texture, not subject matter */}
       <div
         aria-hidden
         className="absolute inset-0 -z-20 opacity-[0.16]"
@@ -54,7 +54,7 @@ export function ContactCTA() {
             <Reveal direction="up" delay={0.18}>
               <p className="mt-7 max-w-lg text-base leading-relaxed text-carbon-300">
                 Talk to our team about automotive parts, products and solutions.
-                Tell us the vehicle and the fault — we will identify the right
+                Tell us the vehicle and the fault, and we will identify the right
                 part and confirm availability.
               </p>
             </Reveal>
@@ -99,7 +99,7 @@ export function ContactCTA() {
           {/* Contact panel */}
           <Reveal direction="left" delay={0.15} className="lg:col-span-5">
             <div className="h-full rounded-md border border-ink/10 bg-ink/[0.035] p-7 backdrop-blur-xl lg:p-9">
-              <p className="font-tech text-[0.5625rem] uppercase tracking-[0.28em] text-carbon-400">
+              <p className="font-tech text-[0.5625rem] uppercase tracking-[0.17em] text-carbon-400">
                 Direct Lines
               </p>
 
@@ -131,7 +131,7 @@ export function ContactCTA() {
                 />
               </ul>
 
-              <p className="mt-7 border-t border-ink/[0.08] pt-6 font-tech text-[0.625rem] uppercase tracking-[0.18em] text-carbon-400">
+              <p className="mt-7 border-t border-ink/[0.08] pt-6 font-tech text-[0.625rem] uppercase tracking-[0.12em] text-carbon-400">
                 {contact.hours}
               </p>
             </div>
@@ -166,7 +166,7 @@ function ContactRow({
           {icon}
         </span>
         <span className="min-w-0 flex-1">
-          <span className="block font-tech text-[0.5625rem] uppercase tracking-[0.22em] text-carbon-500">
+          <span className="block font-tech text-[0.5625rem] uppercase tracking-[0.1em] text-carbon-500">
             {label}
           </span>
           <span className="mt-1.5 block truncate text-sm text-carbon-100 transition-colors duration-500 group-hover:text-ink">

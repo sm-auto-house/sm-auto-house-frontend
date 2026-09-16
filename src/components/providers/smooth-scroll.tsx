@@ -8,7 +8,7 @@ let lenisInstance: Lenis | null = null;
 
 /**
  * Sections carry `scroll-mt-*` for the sticky navbar and Lenis honours that
- * scroll-margin, so no extra offset is applied here — adding one stacks with
+ * scroll-margin, so no extra offset is applied here; adding one stacks with
  * the CSS and drops the target too far down the viewport.
  */
 const NAV_OFFSET = 0;
@@ -48,7 +48,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 
       const lenis = new LenisCtor({
         duration: 1.05,
-        // Gentle exponential ease-out — momentum without feeling slippery.
+        // Gentle exponential ease-out: momentum without feeling slippery.
         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smoothWheel: true,
         touchMultiplier: 1.6,

@@ -20,9 +20,9 @@ export function Stats({ className }: { className?: string }) {
             <CountUp
               value={stat.value}
               suffix={stat.suffix}
-              className="font-display text-[clamp(2rem,4.4vw,3rem)] font-extrabold leading-none tracking-[-0.045em] text-ink transition-colors duration-500 group-hover:text-signal"
+              className="font-display text-[clamp(2rem,4.4vw,3rem)] font-extrabold leading-none tracking-[-0.025em] text-ink transition-colors duration-500 group-hover:text-signal"
             />
-            <span className="font-tech text-[0.625rem] uppercase leading-[1.6] tracking-[0.2em] text-carbon-400">
+            <span className="font-tech text-[0.625rem] uppercase leading-[1.6] tracking-[0.13em] text-carbon-400">
               {stat.label}
             </span>
           </div>

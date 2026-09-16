@@ -24,7 +24,7 @@ export function storedTheme(): Theme | null {
     const value = window.localStorage.getItem(THEME_STORAGE_KEY);
     return isTheme(value) ? value : null;
   } catch {
-    // Private mode, blocked site data — fall through to the OS preference.
+    // Private mode, blocked site data: fall through to the OS preference.
     return null;
   }
 }
@@ -47,7 +47,7 @@ export function applyTheme(theme: Theme) {
 /**
  * Runs synchronously in <head>, while the browser is still parsing the HTML,
  * so the correct theme is on <html> before the first paint. Anything here must
- * be plain ES5 and must never throw — it blocks rendering.
+ * be plain ES5 and must never throw, because it blocks rendering.
  *
  * It mirrors resolveTheme() + applyTheme() above; keep the two in step.
  */

@@ -19,7 +19,7 @@ export const site = {
       line2: "Colombo 10",
       country: "Sri Lanka",
     },
-    hours: "Mon – Sat · 8.30am – 6.00pm",
+    hours: "Mon to Sat · 8.30am to 6.00pm",
     mapsUrl:
       "https://www.google.com/maps/search/?api=1&query=Maradana+Road+Colombo+10+Sri+Lanka",
   },

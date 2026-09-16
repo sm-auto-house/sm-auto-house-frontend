@@ -99,7 +99,7 @@ export function SearchDialog({
                       <span className="truncate text-sm text-carbon-100 group-hover:text-ink">
                         {entry.label}
                       </span>
-                      <span className="shrink-0 font-tech text-[0.5625rem] uppercase tracking-[0.2em] text-carbon-500">
+                      <span className="shrink-0 font-tech text-[0.5625rem] uppercase tracking-[0.13em] text-carbon-500">
                         {entry.group}
                       </span>
                     </span>

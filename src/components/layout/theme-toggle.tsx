@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 /**
  * The icon pair and the button's accessible name are both swapped by CSS,
- * keyed on the `.dark` / `.light` class the inline head script sets — not by
+ * keyed on the `.dark` / `.light` class the inline head script sets, not by
  * React state. So the control is correct at first paint, before hydration,
  * with no flash and nothing for React to reconcile. Each label is in its own
  * `display: none` span, which keeps it out of the accessibility tree too, so
@@ -25,13 +25,13 @@ function ThemeLabel() {
 function ThemeIcons({ className }: { className?: string }) {
   return (
     <span className={cn("relative block", className)}>
-      {/* Shown while dark — the destination is light */}
+      {/* Shown while dark: the destination is light */}
       <Sun
         aria-hidden
         strokeWidth={1.6}
         className="absolute inset-0 size-full rotate-90 scale-0 opacity-0 transition-all duration-500 ease-premium dark:rotate-0 dark:scale-100 dark:opacity-100"
       />
-      {/* Shown while light — the destination is dark */}
+      {/* Shown while light: the destination is dark */}
       <Moon
         aria-hidden
         strokeWidth={1.6}
@@ -75,7 +75,7 @@ export function ThemeToggleRow({ className }: { className?: string }) {
       type="button"
       onClick={toggleTheme}
       className={cn(
-        "flex items-center gap-3 font-tech text-xs uppercase tracking-[0.18em]",
+        "flex items-center gap-3 font-tech text-xs uppercase tracking-[0.12em]",
         "text-carbon-300 transition-colors hover:text-ink",
         "focus-visible:ring-2 focus-visible:ring-signal/70 focus-visible:outline-none",
         className,

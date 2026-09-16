@@ -20,7 +20,7 @@ export function CategoryGrid() {
         <SectionHeading
           eyebrow="Product Range"
           lines={["Everything Your", "Vehicle Needs."]}
-          description="Explore our complete range of automotive products and components — sourced, tested and stocked for workshops across Sri Lanka."
+          description="Explore our complete range of automotive products and components: sourced, tested and stocked for workshops across Sri Lanka."
         />
 
         <div className="mt-14 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:mt-20 lg:grid-cols-12 lg:gap-4">
@@ -88,13 +88,13 @@ function CategoryCard({
         />
 
         {/* Index */}
-        <span className="absolute left-5 top-5 font-tech text-[0.625rem] tracking-[0.25em] text-ink/45 sm:left-6 sm:top-6">
+        <span className="absolute left-5 top-5 font-tech text-[0.625rem] tracking-[0.11em] text-ink/45 sm:left-6 sm:top-6">
           {category.index}
         </span>
 
         {/* Content */}
         <span className="absolute inset-x-0 bottom-0 flex flex-col p-5 sm:p-6 lg:p-8">
-          <span className="font-display text-[1.375rem] font-extrabold uppercase leading-[1.05] tracking-[-0.02em] text-ink sm:text-2xl lg:text-[1.75rem]">
+          <span className="font-display text-[1.375rem] font-extrabold uppercase leading-[1.05] tracking-[-0.012em] text-ink sm:text-2xl lg:text-[1.75rem]">
             {category.title}
           </span>
 
@@ -103,7 +103,7 @@ function CategoryCard({
             {category.description}
           </span>
 
-          <span className="mt-4 inline-flex items-center gap-2 font-tech text-[0.625rem] uppercase tracking-[0.22em] text-ink lg:mt-5">
+          <span className="mt-4 inline-flex items-center gap-2 font-tech text-[0.625rem] uppercase tracking-[0.1em] text-ink lg:mt-5">
             <span className="transition-colors duration-500 group-hover:text-signal">
               Explore
             </span>

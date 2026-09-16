@@ -22,7 +22,7 @@ const buttonVariants = cva(
         /* ---- brand variants ------------------------------------- */
 
         /** Primary call to action: solid brand violet with a lift on hover.
-         *  The label stays literally white in both themes — it sits on the
+         *  The label stays literally white in both themes, since it sits on the
          *  filled violet, not on the page, so it must not follow `ink`. */
         signal:
           "overflow-hidden bg-signal-solid text-white shadow-[0_0_0_0_var(--glow-signal-rest)] hover:bg-signal-solid-hover hover:shadow-[0_14px_34px_-12px_var(--glow-signal-lift)]",
@@ -32,7 +32,7 @@ const buttonVariants = cva(
         /** Quiet outline for use on flat carbon backgrounds. */
         hairline:
           "overflow-hidden border-ink/15 bg-transparent text-carbon-100 hover:border-signal/70 hover:text-ink",
-        /** Inverted CTA — reads as the opposite of the page, used sparingly. */
+        /** Inverted CTA that reads as the opposite of the page, used sparingly. */
         chalk:
           "overflow-hidden bg-ink text-carbon-950 hover:bg-carbon-100",
       },
@@ -50,10 +50,10 @@ const buttonVariants = cva(
         /* ---- brand sizes ---------------------------------------- */
 
         /** Standard CTA: uppercase, wide tracking, generous hit area. */
-        cta: "h-12 gap-2.5 rounded-sm px-6 font-tech text-[0.6875rem] uppercase tracking-[0.2em] [&_svg:not([class*='size-'])]:size-3.5",
+        cta: "h-12 gap-2.5 rounded-sm px-6 font-tech text-[0.6875rem] uppercase tracking-[0.13em] [&_svg:not([class*='size-'])]:size-3.5",
         /** Hero-scale CTA. */
         "cta-lg":
-          "h-14 gap-3 rounded-sm px-7 font-tech text-xs uppercase tracking-[0.2em] sm:px-9 [&_svg:not([class*='size-'])]:size-4",
+          "h-14 gap-3 rounded-sm px-7 font-tech text-xs uppercase tracking-[0.13em] sm:px-9 [&_svg:not([class*='size-'])]:size-4",
         /** Circular control, used by the product rail arrows. */
         dial: "size-12 rounded-full",
       },

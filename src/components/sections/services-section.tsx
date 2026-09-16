@@ -18,7 +18,7 @@ export function ServicesSection() {
         <SectionHeading
           eyebrow="What We Do"
           lines={["More Than a", "Parts Counter."]}
-          description="Supply is the starting point. The work around it — specification, planning and support — is what keeps vehicles on the road."
+          description="Supply is the starting point. The work around it (specification, planning and support) is what keeps vehicles on the road."
           headingClassName="text-[clamp(1.9rem,5vw,3.4rem)]"
         />
 
@@ -53,7 +53,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           aria-hidden
           className="absolute inset-0 bg-gradient-to-t from-carbon-850 via-carbon-850/35 to-transparent"
         />
-        <span className="absolute left-5 top-5 font-tech text-[0.625rem] tracking-[0.25em] text-ink/50">
+        <span className="absolute left-5 top-5 font-tech text-[0.625rem] tracking-[0.11em] text-ink/50">
           {String(index + 1).padStart(2, "0")}
         </span>
         <ArrowUpRight
@@ -64,7 +64,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
       </div>
 
       <div className="flex flex-1 flex-col p-6 lg:p-7">
-        <h3 className="font-display text-lg font-bold uppercase leading-tight tracking-[-0.01em] text-ink lg:text-xl">
+        <h3 className="font-display text-lg font-bold uppercase leading-tight tracking-[-0.006em] text-ink lg:text-xl">
           {service.title}
         </h3>
         <p className="mt-3 text-[0.875rem] leading-relaxed text-carbon-400">
@@ -75,7 +75,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           {service.points.map((point) => (
             <li
               key={point}
-              className="flex items-center gap-2.5 font-tech text-[0.625rem] uppercase tracking-[0.16em] text-carbon-300"
+              className="flex items-center gap-2.5 font-tech text-[0.625rem] uppercase tracking-[0.11em] text-carbon-300"
             >
               <Check className="size-3.5 shrink-0 text-signal" strokeWidth={2} />
               {point}

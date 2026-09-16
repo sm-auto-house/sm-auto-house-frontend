@@ -68,17 +68,17 @@ function ArticleCard({ article }: { article: Article }) {
           aria-hidden
           className="absolute inset-0 bg-carbon-950/25 transition-opacity duration-700 group-hover:opacity-0"
         />
-        <span className="absolute left-4 top-4 rounded-full border border-ink/15 bg-carbon-950/60 px-3 py-1.5 font-tech text-[0.5625rem] uppercase tracking-[0.18em] text-ink backdrop-blur-md">
+        <span className="absolute left-4 top-4 rounded-full border border-ink/15 bg-carbon-950/60 px-3 py-1.5 font-tech text-[0.5625rem] uppercase tracking-[0.12em] text-ink backdrop-blur-md">
           {article.category}
         </span>
       </div>
 
       <div className="flex flex-1 flex-col pt-6">
-        <time className="font-tech text-[0.5625rem] uppercase tracking-[0.24em] text-carbon-500">
+        <time className="font-tech text-[0.5625rem] uppercase tracking-[0.15em] text-carbon-500">
           {article.date}
         </time>
 
-        <h3 className="mt-3 font-display text-lg font-bold uppercase leading-[1.18] tracking-[-0.015em] text-ink transition-colors duration-500 group-hover:text-signal lg:text-xl">
+        <h3 className="mt-3 font-display text-lg font-bold uppercase leading-[1.18] tracking-[-0.006em] text-ink transition-colors duration-500 group-hover:text-signal lg:text-xl">
           {article.title}
         </h3>
 
@@ -86,7 +86,7 @@ function ArticleCard({ article }: { article: Article }) {
           {article.excerpt}
         </p>
 
-        <span className="mt-5 inline-flex items-center gap-2 font-tech text-[0.625rem] uppercase tracking-[0.2em] text-carbon-200">
+        <span className="mt-5 inline-flex items-center gap-2 font-tech text-[0.625rem] uppercase tracking-[0.13em] text-carbon-200">
           Read More
           <ArrowRight
             className="size-3.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1.5 group-hover:text-signal"

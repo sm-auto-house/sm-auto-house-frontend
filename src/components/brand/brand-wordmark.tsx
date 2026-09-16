@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 /**
- * Placeholder partner wordmarks. These are invented names rendered as type —
+ * Placeholder partner wordmarks. These are invented names rendered as type,
  * swap this component for real SVG assets when the brand pack arrives.
  */
 
@@ -53,7 +53,7 @@ export function BrandWordmark({
       >
         {GLYPHS[glyph]}
       </svg>
-      <span className="font-display text-sm font-bold uppercase tracking-[0.16em] sm:text-[0.9375rem]">
+      <span className="font-display text-sm font-bold uppercase tracking-[0.11em] sm:text-[0.9375rem]">
         {name}
       </span>
     </span>

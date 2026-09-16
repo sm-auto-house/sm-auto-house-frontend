@@ -32,7 +32,7 @@ type ThemeContextValue = {
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 /** Marks the document for the length of one swap so the base stylesheet can
- *  cross-fade colours. Kept off the document at rest — a standing transition
+ *  cross-fade colours. Kept off the document at rest, because a standing transition
  *  on every element is a cost nothing else here needs to pay. */
 const CROSS_FADE_MS = 320;
 let crossFadeTimer: number | undefined;
@@ -57,7 +57,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useLayoutEffect(() => {
     // React resets <html>'s attributes on the dev Strict Mode remount, which
     // drops what the inline script set. Re-apply before paint; a no-op in
-    // production. State needs no correction here — the initializer above read
+    // production. State needs no correction here: the initializer above read
     // the same source the script did.
     applyTheme(resolveTheme());
   }, []);
@@ -95,7 +95,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     try {
       window.localStorage.setItem(THEME_STORAGE_KEY, next);
     } catch {
-      // Storage unavailable — the choice holds for this page view only.
+      // Storage unavailable, so the choice holds for this page view only.
     }
   }, []);
 

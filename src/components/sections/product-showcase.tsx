@@ -59,7 +59,7 @@ export function ProductShowcase() {
         <SectionHeading
           eyebrow="Featured Products"
           lines={["Performance", "You Can Trust."]}
-          description="A selection from the shelves — lubricants, components and consumables we supply every day."
+          description="A selection from the shelves: lubricants, components and consumables we supply every day."
           action={
             <div className="flex items-center gap-3">
               <Button
@@ -107,11 +107,11 @@ export function ProductShowcase() {
 
       <Container className="relative z-10">
         <div className="mt-8 flex items-center gap-4">
-          <span className="font-tech text-[0.5625rem] uppercase tracking-[0.28em] text-carbon-500">
+          <span className="font-tech text-[0.5625rem] uppercase tracking-[0.17em] text-carbon-500">
             Drag or scroll
           </span>
           <span aria-hidden className="h-px flex-1 rule-fade" />
-          <span className="font-tech text-[0.5625rem] uppercase tracking-[0.28em] text-carbon-500">
+          <span className="font-tech text-[0.5625rem] uppercase tracking-[0.17em] text-carbon-500">
             {String(products.length).padStart(2, "0")} items
           </span>
         </div>
@@ -158,19 +158,19 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
         />
 
         {/* Spec chip */}
-        <span className="absolute left-5 top-5 rounded-full border border-ink/15 bg-carbon-950/45 px-3 py-1.5 font-tech text-[0.5625rem] uppercase tracking-[0.18em] text-carbon-200 backdrop-blur-md">
+        <span className="absolute left-5 top-5 rounded-full border border-ink/15 bg-carbon-950/45 px-3 py-1.5 font-tech text-[0.5625rem] uppercase tracking-[0.12em] text-carbon-200 backdrop-blur-md">
           {product.spec}
         </span>
 
         <span className="relative z-10 flex flex-col p-5 sm:p-6">
-          <span className="font-tech text-[0.5625rem] uppercase tracking-[0.24em] text-signal">
+          <span className="font-tech text-[0.5625rem] uppercase tracking-[0.15em] text-signal">
             {product.category}
           </span>
-          <span className="mt-2.5 font-display text-xl font-extrabold uppercase leading-[1.08] tracking-[-0.02em] text-ink sm:text-[1.375rem]">
+          <span className="mt-2.5 font-display text-xl font-extrabold uppercase leading-[1.08] tracking-[-0.012em] text-ink sm:text-[1.375rem]">
             {product.name}
           </span>
 
-          <span className="mt-4 flex items-center gap-2 font-tech text-[0.625rem] uppercase tracking-[0.2em] text-carbon-200 transition-colors duration-500 group-hover:text-ink">
+          <span className="mt-4 flex items-center gap-2 font-tech text-[0.625rem] uppercase tracking-[0.13em] text-carbon-200 transition-colors duration-500 group-hover:text-ink">
             View Product
             <ArrowRight
               className="size-3.5 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1.5"

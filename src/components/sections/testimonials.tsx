@@ -88,7 +88,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
           <span className="block font-display text-[0.8125rem] font-bold uppercase leading-snug tracking-[0.04em] text-ink">
             {testimonial.name}
           </span>
-          <span className="mt-1 block font-tech text-[0.5625rem] uppercase leading-[1.6] tracking-[0.14em] text-carbon-400">
+          <span className="mt-1 block font-tech text-[0.5625rem] uppercase leading-[1.6] tracking-[0.1em] text-carbon-400">
             {testimonial.role}
           </span>
         </span>

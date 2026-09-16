@@ -1,7 +1,7 @@
 import { img, photo } from "@/lib/images";
 
 /* ------------------------------------------------------------------ */
-/*  Product categories — asymmetric editorial grid                     */
+/*  Product categories: asymmetric editorial grid                      */
 /* ------------------------------------------------------------------ */
 export type Category = {
   id: string;
@@ -115,7 +115,7 @@ export const stats: Stat[] = [
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Featured products — horizontal rail                                */
+/*  Featured products: horizontal rail                                 */
 /* ------------------------------------------------------------------ */
 export type Product = {
   id: string;
@@ -185,7 +185,7 @@ export const products: Product[] = [
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Distribution partners — placeholder wordmarks                      */
+/*  Distribution partners: placeholder wordmarks                       */
 /* ------------------------------------------------------------------ */
 export const brands = [
   "AXLON",
@@ -279,7 +279,7 @@ export const testimonials: Testimonial[] = [
     name: "Roshan Jayawardena",
     role: "Owner · Kandy Motor Works",
     quote:
-      "Their team knows the catalogue properly. I describe the fault, they identify the part — no guesswork, no returns.",
+      "Their team knows the catalogue properly. I describe the fault, they identify the part. No guesswork, no returns.",
     rating: 5,
     avatar: img(photo.avatarC, { w: 200, h: 200 }),
   },
@@ -329,7 +329,7 @@ export const articles: Article[] = [
     id: "monsoon-checklist",
     title: "Preparing Your Vehicle for the Monsoon Season",
     excerpt:
-      "Brakes, wipers, filtration and electrics — the eight-point check that prevents most wet-weather callouts.",
+      "Brakes, wipers, filtration and electrics: the eight-point check that prevents most wet-weather callouts.",
     category: "Guides",
     date: "09 July 2026",
     image: img(photo.evCharging, { w: 1200, h: 900 }),

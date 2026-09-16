@@ -73,7 +73,7 @@ export function Navbar() {
     <>
       <header
         /* While transparent the bar floats over the hero photograph, which
-           stays dark in both themes — so it borrows the dark palette. Once it
+           stays dark in both themes, so it borrows the dark palette. Once it
            goes solid it is a page surface again and follows the theme. */
         data-surface={solid ? undefined : "media"}
         className={cn(
@@ -119,7 +119,7 @@ export function Navbar() {
                         go(item.href);
                       }}
                       className={cn(
-                        "group relative block px-4 py-2 font-tech text-[0.6875rem] uppercase tracking-[0.18em] transition-colors duration-300",
+                        "group relative block px-4 py-2 font-tech text-[0.6875rem] uppercase tracking-[0.12em] transition-colors duration-300",
                         isActive
                           ? "text-ink"
                           : "text-carbon-300 hover:text-ink",
@@ -217,7 +217,7 @@ function MobileMenu({
   onNavigate: (href: string) => void;
   active: string;
 }) {
-  // Close on Escape — the overlay is a plain element, not a native dialog.
+  // Close on Escape: the overlay is a plain element, not a native dialog.
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
@@ -320,7 +320,7 @@ function MobileMenu({
                 <div className="flex flex-wrap items-center justify-between gap-4">
                   <a
                     href={site.contact.phoneHref}
-                    className="flex items-center gap-3 font-tech text-xs uppercase tracking-[0.18em] text-carbon-300 transition-colors hover:text-ink"
+                    className="flex items-center gap-3 font-tech text-xs uppercase tracking-[0.12em] text-carbon-300 transition-colors hover:text-ink"
                   >
                     <Phone className="size-4 text-signal" strokeWidth={1.6} />
                     {site.contact.phone}

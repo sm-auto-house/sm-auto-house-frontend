@@ -49,12 +49,12 @@ export function WhyChooseUs() {
                       className="size-7 text-carbon-300 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-0.5 group-hover:text-signal"
                       strokeWidth={1.25}
                     />
-                    <span className="font-tech text-[0.625rem] tracking-[0.25em] text-carbon-600 transition-colors duration-500 group-hover:text-carbon-400">
+                    <span className="font-tech text-[0.625rem] tracking-[0.11em] text-carbon-600 transition-colors duration-500 group-hover:text-carbon-400">
                       {feature.index}
                     </span>
                   </div>
 
-                  <h3 className="mt-12 font-display text-lg font-bold uppercase leading-tight tracking-[-0.01em] text-ink lg:mt-16 lg:text-xl">
+                  <h3 className="mt-12 font-display text-lg font-bold uppercase leading-tight tracking-[-0.006em] text-ink lg:mt-16 lg:text-xl">
                     {feature.title}
                   </h3>
                   <p className="mt-3 text-[0.875rem] leading-relaxed text-carbon-400 transition-colors duration-500 group-hover:text-carbon-300">

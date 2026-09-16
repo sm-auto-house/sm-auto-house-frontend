@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Inter, JetBrains_Mono } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans, Saira } from "next/font/google";
 
 import { SmoothScroll } from "@/components/providers/smooth-scroll";
 import { ThemeProvider } from "@/components/providers/theme-provider";
@@ -8,20 +8,32 @@ import { DEFAULT_THEME, THEME_SCRIPT } from "@/lib/theme";
 
 import "./globals.css";
 
-const archivo = Archivo({
-  variable: "--font-archivo",
+/**
+ * Three faces, one argument.
+ *
+ * Saira carries the headlines: squared counters and flat terminals that pick up
+ * the geometry of the AUTO HOUSE wordmark in the logo, so the display type and
+ * the mark read as the same family of shapes.
+ *
+ * Body and small technical labels come from one superfamily, IBM Plex. Sharing
+ * a skeleton between the running text and the monospace labels is what stops
+ * the page looking like three unrelated webfonts stacked together.
+ */
+const saira = Saira({
+  variable: "--font-saira",
   subsets: ["latin"],
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const plexSans = IBM_Plex_Sans({
+  variable: "--font-plex-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
-const jetbrains = JetBrains_Mono({
-  variable: "--font-jetbrains",
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
   display: "swap",
@@ -30,7 +42,7 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.tagline}`,
+    default: `${site.name} · ${site.tagline}`,
     template: `%s · ${site.name}`,
   },
   description: site.description,
@@ -48,20 +60,19 @@ export const metadata: Metadata = {
     locale: "en_LK",
     url: site.url,
     siteName: site.name,
-    title: `${site.name} — ${site.tagline}`,
+    title: `${site.name} · ${site.tagline}`,
     description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — ${site.tagline}`,
+    title: `${site.name} · ${site.tagline}`,
     description: site.description,
   },
-  icons: { icon: "/favicon.ico" },
 };
 
 export const viewport: Viewport = {
   // Browser chrome follows the OS preference. A visitor who has explicitly
-  // chosen the other theme keeps the default bar colour — a meta tag cannot
+  // chosen the other theme keeps the default bar colour, since a meta tag cannot
   // read localStorage, and the page itself is correct either way.
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#f7f8fa" },
@@ -74,7 +85,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${DEFAULT_THEME} ${archivo.variable} ${inter.variable} ${jetbrains.variable}`}
+      className={`${DEFAULT_THEME} ${saira.variable} ${plexSans.variable} ${plexMono.variable}`}
       suppressHydrationWarning
     >
       <head>
