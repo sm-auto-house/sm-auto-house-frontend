@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SM Auto House
 
-## Getting Started
+Marketing site for **SM Auto House** — an automotive spare parts, lubricants and
+vehicle products distributor based in Colombo, Sri Lanka.
 
-First, run the development server:
+Built with Next.js (App Router), TypeScript, Tailwind CSS v4, shadcn/ui,
+Framer Motion and Lucide icons.
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Design system
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The whole site is permanently dark. Tokens live in
+[`src/app/globals.css`](src/app/globals.css):
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Token group | Notes |
+| --- | --- |
+| `--color-carbon-*` | The charcoal chassis, `950` (deepest) → `100` (near-white text). Section backgrounds alternate between `925`, `900` and `950`. |
+| `--color-signal*` | The automotive accent, `#ff3d17`. Used for CTAs, active states and hover transitions — never for large fills. |
+| `--font-display` | Archivo. Oversized uppercase headlines, paired with the `display-tight` utility (tight tracking, 0.88 leading). |
+| `--font-body` | Inter. All running copy. |
+| `--font-tech` | JetBrains Mono. Eyebrows, labels, metadata — anything that should read as instrumentation. Use the `eyebrow` utility. |
 
-## Learn More
+The shadcn CSS variables (`--background`, `--primary`, …) are mapped onto this
+palette in the same file, so shadcn components inherit the brand automatically.
+`--primary` is the signal colour, so a default shadcn `<Button>` is already
+on-brand.
 
-To learn more about Next.js, take a look at the following resources:
+Custom utilities: `display-tight`, `eyebrow`, `grain`, `rule-fade`,
+`hide-scrollbar`, `mask-rail`, `link-underline`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+  app/                    layout (fonts, metadata), page composition, globals.css
+  components/
+    brand/                logo, partner wordmarks, social glyphs
+    layout/               navbar, mobile menu, search dialog, footer
+    motion/               Reveal, TextReveal, CountUp, Magnetic, ParallaxImage
+    providers/            SmoothScroll (Lenis) + scrollToSection helper
+    sections/             one file per page section
+    ui/                   shadcn primitives + Container, SectionHeading, EyebrowLabel
+  lib/
+    site.ts               company details, navigation, social links
+    content.ts            categories, products, stats, features, testimonials, news, services
+    images.ts             verified photo ids + the `img()` crop helper
+```
 
-## Deploy on Vercel
+Page order is composed in [`src/app/page.tsx`](src/app/page.tsx).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Motion
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+All motion is centralised in `src/components/motion/` and every primitive
+respects `prefers-reduced-motion`.
+
+- **`Reveal` / `RevealGroup` / `RevealItem`** — scroll-triggered fade + slide, with stagger.
+- **`TextReveal`** — masked line-by-line headline reveal. It watches the *clip
+  wrapper*, not the sliding span: at rest each span sits fully outside its own
+  `overflow-hidden` box, so an observer on the span itself would measure zero
+  intersection and the line could never reveal.
+- **`CountUp`** — statistics tween on first view.
+- **`Magnetic`** — CTA buttons drift toward the cursor (mouse pointers only).
+- **`ParallaxImage`** — over-scaled plate that drifts as the section passes.
+- **Smooth scrolling** — Lenis drives real window scrolling, so `position: sticky`,
+  IntersectionObserver and `useScroll` all keep working. Use
+  `scrollToSection('#id')` for in-page anchors rather than a bare `href`, and
+  keep `scroll-mt-24` on any section you want to anchor to — Lenis honours
+  scroll-margin, so no extra offset is needed.
+
+## Swapping in real assets
+
+Everything below is placeholder content, structured so it can be replaced
+without touching component code.
+
+- **Photography** — `src/lib/images.ts` holds Unsplash photo ids; `img(id, {w,h})`
+  builds the URL. Point these at your own CDN and update
+  `images.remotePatterns` in [`next.config.ts`](next.config.ts).
+  Next 16 requires any non-default `quality` to be listed in `images.qualities`.
+- **Partner logos** — `brands` in `src/lib/content.ts` are invented names rendered
+  as type by `src/components/brand/brand-wordmark.tsx`. Replace that component
+  with real SVGs, and remove the "placeholder marks" note in `BrandGrid`.
+- **Company details** — `src/lib/site.ts` (phone, email, address, maps link, hours).
+- **Copy** — `src/lib/content.ts`.
+- **Logo** — `src/components/brand/logo.tsx` is an inline SVG monogram.
+
+## Notes
+
+- Sections are anchored by id: `#home`, `#products`, `#about`, `#showcase`,
+  `#brands`, `#why-us`, `#services`, `#news`, `#contact`.
+- The product rail sets `scroll-pl-*` to match its own padding. Without it the
+  snapport starts at the padding box edge and the browser scrolls the first card
+  flush against the viewport.
+- `body` uses `overflow-x: clip` as a backstop, but layout is verified free of
+  horizontal overflow from 360px to 1600px.
+- Card, article and product links currently point at in-page anchors; wire them
+  to real routes when the catalogue exists.

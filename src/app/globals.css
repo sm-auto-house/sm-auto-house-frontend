@@ -1,26 +1,434 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@custom-variant dark (&:is(.dark *));
+@custom-variant light (&:is(.light *));
+
+/* ------------------------------------------------------------------ */
+/*  Static design tokens                                               */
+/*  Values here are theme-independent: type, motion, rhythm, and the   */
+/*  fixed brand ramp. Anything that flips between dark and light is    */
+/*  declared further down as a raw custom property.                    */
+/* ------------------------------------------------------------------ */
+@theme {
+  /* Typography */
+  --font-display: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  --font-body: var(--font-inter), "Helvetica Neue", Arial, sans-serif;
+  --font-tech: var(--font-jetbrains), ui-monospace, "SFMono-Regular", monospace;
+
+  /* Brand ramp — hue-locked on #631f89, the house violet (brand-600).
+     Steps are even in OKLCH lightness so tints stay on-hue at both ends. */
+  --color-brand-50: #fbedff;
+  --color-brand-100: #f2dcff;
+  --color-brand-200: #e4c1ff;
+  --color-brand-300: #ce9bf4;
+  --color-brand-400: #b171de;
+  --color-brand-500: #8c44b8;
+  --color-brand-600: #631f89;
+  --color-brand-700: #4f0e70;
+  --color-brand-800: #390054;
+  --color-brand-900: #25003a;
+  --color-brand-950: #150023;
+
+  /* Motion */
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-swift: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* Rhythm */
+  --spacing-section: clamp(5rem, 11vw, 10.5rem);
 }
 
+/* ------------------------------------------------------------------ */
+/*  Dark theme — the default chassis                                   */
+/*  The carbon scale runs deepest (950) to brightest (100). Every       */
+/*  surface reaches for the deep end, every piece of type for the       */
+/*  bright end. The light theme below keeps those roles and simply      */
+/*  supplies a paper palette, so no component needs a `light:` variant. */
+/*                                                                      */
+/*  `[data-surface="media"]` opts a subtree back into this palette      */
+/*  permanently. A photograph does not get lighter because the page     */
+/*  did, so anywhere type sits on imagery — the hero, the full-bleed    */
+/*  banner, the photo cards — keeps its dark scrims and light type in   */
+/*  both themes. Custom properties inherit, so re-declaring them on the */
+/*  subtree root is enough; nothing inside needs to know.               */
+/* ------------------------------------------------------------------ */
+:root,
+.dark,
+[data-surface="media"] {
+  color-scheme: dark;
+
+  /* Carbon — 950 is the deepest ground, 100 the brightest type */
+  --carbon-950: #050609;
+  --carbon-925: #07080b;
+  --carbon-900: #0a0b10;
+  --carbon-850: #0e1015;
+  --carbon-800: #13151c;
+  --carbon-750: #181b23;
+  --carbon-700: #1e222b;
+  --carbon-600: #282d38;
+  --carbon-500: #3a404e;
+  --carbon-400: #5a6170;
+  --carbon-300: #878e9d;
+  --carbon-200: #b6bcc7;
+  --carbon-100: #e3e6ea;
+
+  /* Maximum-contrast foreground, and its opposite */
+  --ink: #ffffff;
+  --ink-invert: #050609;
+
+  /* Accent. `signal` is the reading value — type, icons, hairlines — so on
+     a near-black ground it is lifted to brand-400 (6.1:1). `signal-solid`
+     is the filled-button value, chosen so a white label clears AA. */
+  --signal: #b171de;
+  --signal-hover: #ce9bf4;
+  --signal-solid: #8c44b8;
+  --signal-solid-hover: #9d55c9;
+  --signal-deep: #4f0e70;
+
+  /* Composited effects */
+  --hairline: rgba(255, 255, 255, 0.12);
+  --hairline-soft: rgba(255, 255, 255, 0.09);
+  --shadow-plate: rgba(0, 0, 0, 1);
+  --shadow-plate-soft: rgba(0, 0, 0, 0.85);
+  --vignette: rgba(5, 6, 9, 0.7);
+  --glow-signal-rest: rgba(140, 68, 184, 0.45);
+  --glow-signal-lift: rgba(140, 68, 184, 0.75);
+  --grain-blend: overlay;
+  --grain-opacity: 0.4;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Light theme — same roles, paper palette                            */
+/* ------------------------------------------------------------------ */
+.light {
+  color-scheme: light;
+
+  /* 950 is still "the deepest ground" — on paper that means white */
+  --carbon-950: #ffffff;
+  --carbon-925: #f7f8fa;
+  --carbon-900: #f2f3f7;
+  --carbon-850: #e9ebf1;
+  --carbon-800: #e1e3ea;
+  --carbon-750: #d7dae3;
+  --carbon-700: #c5c9d5;
+  --carbon-600: #a1a6b5;
+  --carbon-500: #6b7284;
+  --carbon-400: #545b6b;
+  --carbon-300: #3b4251;
+  --carbon-200: #242a36;
+  --carbon-100: #0f1219;
+
+  --ink: #05070c;
+  --ink-invert: #ffffff;
+
+  /* On paper the brand hex carries itself: 10:1 as type, 10:1 under a
+     white label, so reading and filled values converge. */
+  --signal: #631f89;
+  --signal-hover: #4f0e70;
+  --signal-solid: #631f89;
+  --signal-solid-hover: #7a35a4;
+  --signal-deep: #390054;
+
+  --hairline: rgba(9, 12, 20, 0.14);
+  --hairline-soft: rgba(9, 12, 20, 0.1);
+  --shadow-plate: rgba(16, 19, 30, 0.3);
+  --shadow-plate-soft: rgba(16, 19, 30, 0.22);
+  --vignette: rgba(255, 255, 255, 0.72);
+  --glow-signal-rest: rgba(99, 31, 137, 0.35);
+  --glow-signal-lift: rgba(99, 31, 137, 0.5);
+  --grain-blend: multiply;
+  --grain-opacity: 0.16;
+}
+
+/* ------------------------------------------------------------------ */
+/*  shadcn token bridge                                                */
+/* ------------------------------------------------------------------ */
+:root,
+.dark,
+[data-surface="media"] {
+  --background: var(--carbon-925);
+  --foreground: #f2f3f5;
+
+  --card: var(--carbon-850);
+  --card-foreground: #f2f3f5;
+
+  --popover: var(--carbon-900);
+  --popover-foreground: #f2f3f5;
+
+  --primary: var(--signal-solid);
+  --primary-foreground: #ffffff;
+
+  --secondary: var(--carbon-800);
+  --secondary-foreground: #f2f3f5;
+
+  --muted: var(--carbon-800);
+  --muted-foreground: var(--carbon-300);
+
+  --accent: var(--carbon-750);
+  --accent-foreground: var(--ink);
+
+  --destructive: #e5484d;
+
+  --border: var(--hairline-soft);
+  --input: rgba(255, 255, 255, 0.14);
+  --ring: color-mix(in oklab, var(--signal) 55%, transparent);
+
+  --radius: 0.25rem;
+
+  --sidebar: var(--carbon-900);
+  --sidebar-foreground: #f2f3f5;
+  --sidebar-primary: var(--signal-solid);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--carbon-800);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--hairline-soft);
+  --sidebar-ring: color-mix(in oklab, var(--signal) 55%, transparent);
+}
+
+.light {
+  --foreground: #14171f;
+  --card-foreground: #14171f;
+  --popover-foreground: #14171f;
+  --secondary-foreground: #14171f;
+  --input: rgba(9, 12, 20, 0.16);
+  --sidebar-foreground: #14171f;
+}
+
+/* Map the shadcn CSS variables onto Tailwind's colour namespace. */
 @theme inline {
+  /* Theme-reactive brand surface scale */
+  --color-carbon-950: var(--carbon-950);
+  --color-carbon-925: var(--carbon-925);
+  --color-carbon-900: var(--carbon-900);
+  --color-carbon-850: var(--carbon-850);
+  --color-carbon-800: var(--carbon-800);
+  --color-carbon-750: var(--carbon-750);
+  --color-carbon-700: var(--carbon-700);
+  --color-carbon-600: var(--carbon-600);
+  --color-carbon-500: var(--carbon-500);
+  --color-carbon-400: var(--carbon-400);
+  --color-carbon-300: var(--carbon-300);
+  --color-carbon-200: var(--carbon-200);
+  --color-carbon-100: var(--carbon-100);
+
+  /* `ink` is the maximum-contrast foreground for the active theme —
+     white on the dark chassis, near-black on paper. Use it instead of a
+     literal `white` anywhere the mark has to stay readable in both. */
+  --color-ink: var(--ink);
+  --color-ink-invert: var(--ink-invert);
+
+  --color-signal: var(--signal);
+  --color-signal-hover: var(--signal-hover);
+  --color-signal-solid: var(--signal-solid);
+  --color-signal-solid-hover: var(--signal-solid-hover);
+  --color-signal-deep: var(--signal-deep);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* shadcn components reach for this when rendering headings. */
+  --font-heading: var(--font-display);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ------------------------------------------------------------------ */
+/*  Base                                                               */
+/* ------------------------------------------------------------------ */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-body;
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  /* Lenis drives scrolling itself once mounted */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  html.lenis {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  body {
+    @apply bg-carbon-925 text-carbon-100 font-body antialiased;
+    /* Never allow a stray transform or oversized banner to scroll the page sideways */
+    overflow-x: clip;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Swapping the theme repaints most of the page at once; a short cross-fade
+     keeps that from reading as a flash. The attribute is only on the document
+     for the length of the swap, so this never costs anything at rest, and it
+     sits in `base` so a component's own transition utility still wins. */
+  html[data-theme-switching] body,
+  html[data-theme-switching] body *,
+  html[data-theme-switching] body *::before,
+  html[data-theme-switching] body *::after {
+    transition-property: background-color, border-color, color, fill, stroke,
+      box-shadow, outline-color, -webkit-text-stroke-color;
+    transition-duration: 320ms;
+    transition-timing-function: var(--ease-swift);
+  }
+
+  ::selection {
+    background-color: var(--signal-solid);
+    color: #ffffff;
+  }
+
+  /* A restrained, brand-coloured scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--carbon-925);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--carbon-700);
+    border-radius: 999px;
+    border: 2px solid var(--carbon-925);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--carbon-600);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    text-wrap: balance;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ------------------------------------------------------------------ */
+/*  Utilities                                                          */
+/* ------------------------------------------------------------------ */
+@utility hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Oversized display lettering: tight, confident, engineered */
+@utility display-tight {
+  letter-spacing: -0.035em;
+  line-height: 0.88;
+}
+
+@utility eyebrow {
+  @apply font-tech text-[0.6875rem] uppercase tracking-[0.28em] leading-none;
+}
+
+/* A hairline that fades out — used to separate sections without a hard rule */
+@utility rule-fade {
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    var(--hairline) 18%,
+    var(--hairline) 82%,
+    transparent
+  );
+}
+
+/* Subtle film grain, keeps large flat areas from banding */
+@utility grain {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: var(--grain-opacity);
+    mix-blend-mode: var(--grain-blend);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  }
+}
+
+/* Edge-fade mask for horizontal rails on wide screens */
+@utility mask-rail {
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 3rem,
+    #000 calc(100% - 3rem),
+    transparent
+  );
+}
+
+@utility link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.45s var(--ease-premium);
+  &:hover {
+    background-size: 100% 1px;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Accessibility                                                      */
+/* ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
