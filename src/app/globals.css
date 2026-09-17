@@ -16,6 +16,7 @@
   --font-display: var(--font-saira), "Helvetica Neue", Arial, sans-serif;
   --font-body: var(--font-plex-sans), "Helvetica Neue", Arial, sans-serif;
   --font-tech: var(--font-plex-mono), ui-monospace, "SFMono-Regular", monospace;
+  --font-hand: var(--font-rock-salt), "Bradley Hand", "Segoe Script", cursive;
 
   /* Brand ramp, hue-locked on #631f89, the house violet (brand-600).
      Steps are even in OKLCH lightness so tints stay on-hue at both ends. */
@@ -365,6 +366,22 @@
 @utility display-tight {
   letter-spacing: -0.018em;
   line-height: 0.9;
+}
+
+/* The one handwritten voice: a shop marker, not a typeface with opinions.
+   Rock Salt ships a single weight, sets loose, and carries huge sidebearings,
+   so it needs the tracking pulled back in and a little air around the line box
+   for its ascenders. Three rules keep it from cheapening the page: never
+   uppercase it (the scrawl is already irregular; capitals turn it to noise),
+   never set it below ~0.9rem (the strokes fill in), and never run more than a
+   line or two of it. Callers set their own leading, since a signature and a
+   two-line note want very different line boxes. */
+@utility hand {
+  font-family: var(--font-hand);
+  font-weight: 400;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: -0.02em;
 }
 
 @utility eyebrow {

@@ -85,7 +85,10 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
           />
         </span>
         <span className="min-w-0 flex-1">
-          <span className="block font-display text-[0.8125rem] font-bold uppercase leading-snug tracking-[0.04em] text-ink">
+          {/* Signed, not labelled: the name is the one thing on this card the
+              customer would have written themselves. Role stays in mono, so the
+              hand reads as a signature rather than as a second type system. */}
+          <span className="hand block text-[0.9375rem] leading-[1.45] text-ink">
             {testimonial.name}
           </span>
           <span className="mt-1 block font-tech text-[0.5625rem] uppercase leading-[1.6] tracking-[0.1em] text-carbon-400">

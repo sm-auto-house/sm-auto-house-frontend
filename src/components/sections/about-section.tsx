@@ -80,9 +80,8 @@ export function AboutSection() {
                 <p>
                   SM Auto House began as a single parts counter in Colombo and
                   grew, over four decades, into one of the country&rsquo;s most
-                  dependable automotive supply networks. What has not changed is
-                  the standard we hold: if a part carries our name on the
-                  invoice, it has to last.
+                  dependable automotive supply networks. Through all of it, one
+                  rule has never moved.
                 </p>
                 <p>
                   Today we supply engine, brake, electrical and suspension
@@ -92,6 +91,17 @@ export function AboutSection() {
                   the vehicles it serves.
                 </p>
               </div>
+            </Reveal>
+
+            <Reveal direction="up" delay={0.22}>
+              <figure className="mt-9 border-l-2 border-signal/70 pl-5 sm:pl-6">
+                <blockquote className="hand text-[1.0625rem] leading-[1.7] text-carbon-100 sm:text-[1.1875rem]">
+                  If it carries our name, it has to last.
+                </blockquote>
+                <figcaption className="mt-3.5 font-tech text-[0.5625rem] uppercase tracking-[0.17em] text-carbon-500">
+                  The rule at the counter since {site.founded}
+                </figcaption>
+              </figure>
             </Reveal>
 
             <Stats className="mt-10 lg:mt-12" />

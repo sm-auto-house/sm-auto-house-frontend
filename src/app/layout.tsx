@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono, IBM_Plex_Sans, Saira } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans, Rock_Salt, Saira } from "next/font/google";
 
 import { SmoothScroll } from "@/components/providers/smooth-scroll";
 import { ThemeProvider } from "@/components/providers/theme-provider";
@@ -18,6 +18,12 @@ import "./globals.css";
  * Body and small technical labels come from one superfamily, IBM Plex. Sharing
  * a skeleton between the running text and the monospace labels is what stops
  * the page looking like three unrelated webfonts stacked together.
+ *
+ * Rock Salt is the one voice that is not engineered: a shop marker, the way a
+ * part number gets written on a box lid. It exists so the two moments where a
+ * person speaks in their own hand - the rule the counter has worked to since
+ * 1984, and a customer signing off on a quote - are visibly not system type.
+ * It never sets a heading, a label or a sentence of body copy.
  */
 const saira = Saira({
   variable: "--font-saira",
@@ -36,6 +42,14 @@ const plexMono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
+  display: "swap",
+});
+
+// One weight, latin only - Rock Salt ships nothing else.
+const rockSalt = Rock_Salt({
+  variable: "--font-rock-salt",
+  subsets: ["latin"],
+  weight: "400",
   display: "swap",
 });
 
@@ -85,7 +99,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${DEFAULT_THEME} ${saira.variable} ${plexSans.variable} ${plexMono.variable}`}
+      className={`${DEFAULT_THEME} ${saira.variable} ${plexSans.variable} ${plexMono.variable} ${rockSalt.variable}`}
       suppressHydrationWarning
     >
       <head>
